@@ -1,6 +1,6 @@
-# Runs every program from the book on each Python version the book was
-# tested with, compares the output with the .out files, and regenerates the
-# datasets to check they are identical. The results are public on the
+# Runs every program and every chapter notebook from the book on each
+# Python version the book was tested with, compares the output with the .out
+# files, and regenerates the datasets to check they are identical. The results are public on the
 # repository's Actions tab.
 name: Check every listing
 
@@ -28,3 +28,5 @@ jobs:
         run: python tests/check_data.py
       - name: Check every listing
         run: python tests/run_listings.py
+      - name: Run every notebook and compare
+        run: python tests/check_notebooks.py

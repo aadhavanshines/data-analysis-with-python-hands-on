@@ -2,7 +2,7 @@
 
 [![Check every listing](https://github.com/aadhavanshines/data-analysis-with-python-hands-on/actions/workflows/check.yml/badge.svg)](https://github.com/aadhavanshines/data-analysis-with-python-hands-on/actions/workflows/check.yml)
 
-All the programs, datasets and exercise solutions from the book ***Data Analysis with Python, Hands-On: Clean, Explore, Visualize and Report on Real Data, from Spreadsheets to SQL, with Six Projects, Exercises and Every Example Tested*** by Aadhavan Muthurengan, arranged by chapter.
+All the programs, Jupyter notebooks, datasets and exercise solutions from the book ***Data Analysis with Python, Hands-On: Clean, Explore, Visualize and Report on Real Data, from Spreadsheets to SQL, with Six Projects, Exercises and Every Example Tested*** by Aadhavan Muthurengan, arranged by chapter.
 
 Every program here was run on Python 3.12, 3.13, 3.14 and 3.15, and its output compared with the output printed in the book. The expected output of each program is stored next to it, so you can check your own runs. The same check runs on GitHub after every change, on all four versions, and its results are public on the [Actions tab](https://github.com/aadhavanshines/data-analysis-with-python-hands-on/actions).
 
@@ -30,6 +30,22 @@ On macOS and Linux, type `python3` instead of `python` until you activate the vi
 The datasets are already in `code/data/`, so you can start straight away. To make them yourself, as Chapter 2 describes, run `python make_data.py` inside `code/data`: it writes exactly the same files.
 
 Type the programs yourself first if you can: you'll learn more, and the files here are there to check against.
+
+## Jupyter notebooks
+
+Every chapter folder also has a notebook with all of that chapter's programs, in the book's order, one program per cell: `code/ch09/ch09.ipynb` for Chapter 9, and so on. The notebooks are saved with their outputs and charts, so you can read them right here on GitHub.
+
+To run them, start Jupyter (installed by `requirements.txt`) from the repository folder, with the virtual environment active:
+
+```
+jupyter notebook
+```
+
+Your browser opens. Go to `code`, then a chapter folder, open its `.ipynb` file, and choose **Run > Run All Cells**. Keep each notebook in its chapter folder: the programs read the datasets from `../data/`.
+
+New to notebooks? Start with `code/ch02/first_notebook.ipynb`, the four-cell example that Chapter 2 walks through. `first_notebook.py` beside it is the same notebook as a plain file: each `# %%` line starts a cell, and editors such as Visual Studio Code can run those cells one at a time.
+
+Exercise solutions stay as `.py` files, so you can try each exercise before seeing an answer, and Chapter 19's pytest example stays as files, because testing is done from a terminal.
 
 ## Chapters
 
@@ -71,9 +87,10 @@ Charts are saved as PNG files in the folder you run the program from.
 | File | Contents |
 | --- | --- |
 | `name.py` | A program from the book |
+| `chNN.ipynb` | The chapter's notebook: every program from the chapter, one per cell, with its output |
 | `name.out` | Its output, exactly as printed in the book |
 | `name.cmd` | The command used instead of `python name.py` (Chapter 19 runs its tests with pytest) |
-| `name.skip` | Not run by itself: `metrics.py` in Chapter 19 is a module the other programs import |
+| `name.skip` | Not run as a program: `metrics.py` in Chapter 19 is a module the other programs import, and `first_notebook.py` in Chapter 2 is notebook cells |
 | `solution_*.py` | Worked solutions to the chapter's exercises, also printed in Appendix A |
 | `code/data/*.csv` | The ten datasets, made by `make_data.py` |
 
@@ -84,6 +101,7 @@ With the virtual environment active, from the repository folder:
 ```
 python tests/check_data.py       # regenerate the datasets and compare them byte for byte
 python tests/run_listings.py     # run every program and compare its output with the .out file
+python tests/check_notebooks.py  # run every notebook and compare each cell with the .out file
 ```
 
 Each program runs in a temporary copy of its chapter folder, so the checks never change your files.
